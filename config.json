@@ -1,0 +1,52 @@
+{
+    "Rates": [{
+            "Item": "Perfumes",
+            "Rate": 28,
+            "Existing": 26
+        },
+        {
+            "Item": "Shampoo",
+            "Rate": 28,
+            "Existing": 26
+        },
+        {
+            "Item": "Dry Fruits",
+            "Rate": 12,
+            "Existing": 6
+        },
+        {
+            "Item": "Hair Oil",
+            "Rate": 18,
+            "Existing": 26
+        },
+        {
+            "Item": "Rice",
+            "Rate": 28,
+            "Existing": 30
+        },
+        {
+            "Item": "AC",
+            "Rate": 28,
+            "Existing": 26
+        },
+        {
+            "Item": "Furniture",
+            "Rate": 28,
+            "Existing": 26
+        },
+        {
+            "Item": "5 Star Resturant",
+            "Rate": 28,
+            "Existing": 18
+        },
+        {
+            "Item": "Telecom ",
+            "Rate": 18,
+            "Existing": 15
+        },
+        {
+            "Item": "LPG for Domestic Use",
+            "Rate": 5,
+            "Existing": 17
+        }]
+}
