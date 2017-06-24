@@ -37,9 +37,9 @@ app.post('/webhook', function (req, res) {
     var lang = lngDetector.detect(body.result.resolvedQuery, 1)[0][0];
     console.log(lang);
     console.log(body);
-    if (action == "gst.defination")
+    if (action === "gst.defination"&&body.result.actionIncomplete === false)
     {
-        if (lang == "hindi")
+        if (lang === "hindi")
         {
             var speech;
             // if(params.AccountType==="Savings") 
@@ -68,21 +68,13 @@ app.post('/webhook', function (req, res) {
             res.set("Content-type", "application/json")
             res.send(json);
         }
-    } else if (action === "gst.objectdata")
-    {   var item = {};
-        for(var i=0;i<config.Rates.length;i++)
-        {
-            if(config.Rates[i].item["Item"]==params.objectname)
-            {
-                item = config.Rates[i];
-                break;
-            }
-        }
-        if (lang == "hindi")
+    } else if (action === "gst.objectdata"&&body.result.actionIncomplete === false)
+    {   
+        if (lang === "hindi")
         {
             var speech;
             // if(params.AccountType==="Savings") 
-            speech = "GST के पहले: "+item.Existing+"% ,GST के बाद: "+item.Rate+"%";
+            speech = "GST के पहले: 0% ,GST के बाद: 0%";
 //        else speech = "Here is Approved Sanctioned Amount for your "+params.AccountType+" Account" + accountDetails.ApprovedSanctionedAmount;
 
             var json = {
@@ -94,6 +86,15 @@ app.post('/webhook', function (req, res) {
             res.send(json);
         } else
         {
+            var item = {};
+        for(var i=0;i<config.Rates.length;i++)
+        {
+            if(config.Rates[i]["Item"]===params.objectname)
+            {
+                item = config.Rates[i];
+                break;
+            }
+        }
             var speech;
             // if(params.AccountType==="Savings") 
             speech = "Before GST: "+item.Existing+"% ,After: "+item.Rate+"%";
@@ -107,6 +108,16 @@ app.post('/webhook', function (req, res) {
             res.set("Content-type", "application/json")
             res.send(json);
         }
+    }
+    else
+    {
+        var json = {
+                "speech": body.result.fulfillment.speech,
+                "displayText": "",
+                "source": "bot"
+            };
+            res.set("Content-type", "application/json")
+            res.send(json);
     }
 });
 

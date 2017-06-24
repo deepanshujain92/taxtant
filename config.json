@@ -20,9 +20,9 @@
             "Existing": 26
         },
         {
-            "Item": "Rice",
-            "Rate": 28,
-            "Existing": 30
+            "Item": "Cereal",
+            "Rate": 0,
+            "Existing": 0
         },
         {
             "Item": "AC",
@@ -45,8 +45,8 @@
             "Existing": 15
         },
         {
-            "Item": "LPG for Domestic Use",
-            "Rate": 5,
-            "Existing": 17
+            "Item": "चावल",
+            "Rate": 0,
+            "Existing": 0
         }]
 }
