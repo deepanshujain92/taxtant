@@ -1,15 +1,41 @@
 doctype html
-html
+html(lang='en')
   head
-    script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+    title TaxTant
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    style.
+      /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+      .row.content {height: 1500px}
+      /* Set gray background color and 100% height */
+      .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+      }
+      /* Set black background color, white text and some padding */
+      footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      }
+      /* On small screens, set height to 'auto' for sidenav and grid */
+      @media screen and (max-width: 767px) {
+      .sidenav {
+      height: auto;
+      padding: 15px;
+      }
+      .row.content {height: auto;}
+      }
     script(type='text/javascript').
       var lan = "en-US";
       var accessToken = "186574d18dd04bab89242721d5fdc063";
       var baseUrl = "https://api.api.ai/v1/";
       $(document).ready(function() {
       $("#input").keypress(function(event) {
-      if (event.which === 13) {
+      if (event.which == 13) {
       event.preventDefault();
       send();
       }
@@ -17,14 +43,11 @@ html
       $("#rec").click(function(event) {
       switchRecognition();
       });
-       $("#hindi").click(function(event) {
+      $("#hindi").click(function(event) {
       lan = "hi-IN";
-      document.getElementById("input").value='';
       });
       $("#english").click(function(event) {
       lan = "en-US";
-      document.getElementById("input").value='';
-
       });
       });
       var recognition;
@@ -90,24 +113,51 @@ html
       }
       function setResponse(val) {
       $("#response").text(val);
+      $("#query").text($("#input").val());
       }
-    title Welcome to Taxtant - your personal tax assistant bot 
-    meta(name='Taxtant', content='NOINDEX, NOFOLLOW')
-    link(rel='stylesheet', href='\\stylesheets\\style.css')
-    header
   body
-    img(src='\\images\\logo.png', alt='Taxtant: Your Virtual CA')
-    // HTML for SEARCH BAR
-    #tfheader
-      .form-wrapper
-        input#input(type='text', placeholder='Search for...', required='')
-        button#rec.btn.btn-primary Speak
-        .radio
-          label
-            input#english(type='radio', name='optradio')
-            | English
-          label
-            input#hindi(type='radio', name='optradio')
-            | हिंदी
-      .tfclear
-        #response
+    .container-fluid
+      .row.content
+        .col-sm-3.sidenav
+          h4 TaxTant
+          ul.nav.nav-pills.nav-stacked
+            li.active
+              a(href='#section1') Home
+            li
+              a(href='#section2') Income Tax Calculator
+            li
+              a(href='#section3') CA Consultation
+            li
+              a(href='#section3') Blog
+          br
+          .input-group
+            input#input.form-control(type='text', placeholder='Search Blog..')
+            span.input-group-btn
+              button#rec.btn.btn-default(type='button')
+                | Speak
+          .radio
+            label
+              input#english(type='radio', name='optradio')
+              | English
+            label
+              input#english(type='radio', name='optradio')
+              | Hindi
+        .col-sm-9(style='background-color:aliceblue')
+          h4
+            small RECENT QUERIES
+          hr
+          h2#query
+            img(src='http://mygst.site/images/logo.png')
+          h5
+            span.glyphicon.glyphicon-time
+            |  Asked by You, June 25, 2017.
+          h5
+            span.label.label-danger Tax
+            span.label.label-primary GST
+          br
+          p#response
+            | Say hello to Taxtant he is master bot which will help you in evaluating tax related queries and drive you to your needs in IT world.
+          br
+          br
+    footer.container-fluid
+      p Made with love - by TaxTant
