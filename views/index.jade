@@ -4,6 +4,7 @@ html
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     script(type='text/javascript').
+      var lan = "en-US";
       var accessToken = "186574d18dd04bab89242721d5fdc063";
       var baseUrl = "https://api.api.ai/v1/";
       $(document).ready(function() {
@@ -40,7 +41,7 @@ html
       recognition.onend = function() {
       stopRecognition();
       };
-      recognition.lang = "hi-IN";
+      recognition.lang = lan;
       recognition.start();
       }
       function stopRecognition() {
