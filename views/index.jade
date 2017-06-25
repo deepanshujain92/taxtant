@@ -8,13 +8,19 @@ html
       var baseUrl = "https://api.api.ai/v1/";
       $(document).ready(function() {
       $("#input").keypress(function(event) {
-      if (event.which == 13) {
+      if (event.which === 13) {
       event.preventDefault();
       send();
       }
       });
       $("#rec").click(function(event) {
       switchRecognition();
+      });
+       $("#hindi").click(function(event) {
+      lan = "hi-IN";
+      });
+      $("#english").click(function(event) {
+      lan = "en-US";
       });
       });
       var recognition;
@@ -92,6 +98,13 @@ html
       .form-wrapper
         input#input(type='text', placeholder='Search for...', required='')
         button#rec.btn.btn-primary Speak
+        .radio
+          label
+            input#english(type='radio', name='optradio')
+            | English
+          label
+            input#hindi(type='radio', name='optradio')
+            | हिंदी
       .tfclear
         br
         | Response
